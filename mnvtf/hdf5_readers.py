@@ -5,7 +5,6 @@ from __future__ import division
 import h5py
 import numpy as np
 
-
 class SimpleCategorialHDF5Reader(object):
     """
     user should call `openf()` and `closef()` to start/finish.
@@ -41,9 +40,9 @@ class SimpleCategorialHDF5Reader(object):
         image_x = self._f['img_data/hitimes-x'][start: stop]
         image_u = self._f['img_data/hitimes-u'][start: stop]
         image_v = self._f['img_data/hitimes-v'][start: stop]
-        image_x = np.moveaxis(image_x, 1, -1)
-        image_u = np.moveaxis(image_u, 1, -1)
-        image_v = np.moveaxis(image_v, 1, -1)
+#        image_x = np.moveaxis(image_x, 1, -1)
+#        image_u = np.moveaxis(image_u, 1, -1)
+#        image_v = np.moveaxis(image_v, 1, -1)
         label = self._f[self._target_field][start: stop].reshape([-1])
         label[label > self._nlabels - 1] = self._nlabels - 1
         oh_label = np.zeros(
@@ -51,4 +50,12 @@ class SimpleCategorialHDF5Reader(object):
         )
         oh_label[np.arange(label.size), label] = 1
         eventid = self._f['event_data/eventids'][start: stop].reshape([-1])
+        
         return eventid, oh_label, image_x, image_u, image_v
+    
+    def get_key(self, start, stop, key):
+        data = self._f[key][start: stop].reshape([-1])
+        if self._target_field in key:
+            data[data > self._nlabels - 1] = self._nlabels - 1
+
+        return data
