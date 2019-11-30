@@ -6,7 +6,6 @@ import tensorflow as tf
 from absl import logging
 from itertools import cycle
 
-
 def _make_generator_fn(files, batch_size, nclasses=6,
                        target_field='hadro_data/n_hadmultmeas',
                        mode=None, max_evts=None):
