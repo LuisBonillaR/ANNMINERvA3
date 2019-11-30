@@ -46,7 +46,8 @@ NCLASSES=6
 BATCH_SIZE=100
 # Directory with the hdf5 files
 DATA_DIR=/lfstev/e-938/jbonilla/hdf5
-# The name of our training/validation/testing target: 'hadro_data/n_hadmultmeas', 'vtx_data/planecodes', etc
+# The name of our training/validation/testing target: 'hadro_data/n_hadmultmeas',
+# 'vtx_data/planecodes', etc
 TARGET=hadro_data/n_hadmultmeas_50mev
 # Neural network architecture. Default 'ANN' is vertex finding
 NET=ANN
@@ -65,7 +66,8 @@ let SAVE_STEPS=TRAIN_STEPS/10
 MODEL_DIR=/data/minerva/JLBRtesthad/tensorflow/models/vtx_based_100mev
 # How many models should we keep (keeps latest)
 SAVEDMODELS=10
-# File for training. Can be multiple files. To especify files manually, separete them with a 'space': TRAIN_FILES=FILE1 FILE2 FILE3 etc
+# File for training. Can be multiple files. To especify files manually, separete them
+# with a 'space': TRAIN_FILES=FILE1 FILE2 FILE3 etc
 TRAIN_FILES=${DATA_DIR}/me1Nmc/*
 
 # VALIDATION/TESTING
@@ -74,7 +76,8 @@ VALID_STEPS=5000
 
 # model to use for prediction
 MODEL=model.ckpt-155330
-# File for validation/test. Can be multiple files. Can especify several files like in TRAIN_FILES
+# File for validation/test. Can be multiple files. Can especify several files like in
+# TRAIN_FILES
 EVAL_FILES=${DATA_DIR}/me1Fmc/*
 
 # We create our MODEL_DIR if it does'n exist
